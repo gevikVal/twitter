@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Twitter</string>
+    <string name="search">Search the twitter</string>
+    <string name="search_twitter">Search</string>
 </resources>

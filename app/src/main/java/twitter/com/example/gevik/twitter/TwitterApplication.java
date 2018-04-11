@@ -9,9 +9,11 @@ import android.util.Log;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
+
 import timber.log.Timber;
 import twitter.com.example.gevik.twitter.Root.ApplicationModule;
 import twitter.com.example.gevik.twitter.component.ApplicationComponent;
+
 import twitter.com.example.gevik.twitter.component.DaggerApplicationComponent;
 import twitter.com.example.gevik.twitter.module.AndroidModule;
 
@@ -37,6 +39,7 @@ public class TwitterApplication extends Application {
 
         initializeTimber();
         initializeLeakCanary();
+       // initializeRealm();
 
 
         currentApplication = this;
@@ -60,6 +63,8 @@ public class TwitterApplication extends Application {
                 .androidModule(new AndroidModule(this))
                 .build();
     }
+
+
 
     public ApplicationComponent getApplicationComponent() {
         return applicationComponent;

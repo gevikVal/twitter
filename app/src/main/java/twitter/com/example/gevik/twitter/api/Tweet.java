@@ -2,6 +2,8 @@ package twitter.com.example.gevik.twitter.api;
 
 import com.google.gson.annotations.SerializedName;
 
+
+
 public class Tweet {
 
 	@SerializedName("created_at")

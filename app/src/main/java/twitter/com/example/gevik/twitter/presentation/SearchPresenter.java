@@ -21,6 +21,7 @@ import twitter.com.example.gevik.twitter.api.TwitterTokenType;
 public class SearchPresenter implements SearchPresentationContract.Presenter {
     SearchPresentationContract.View view;
     SearchDataSourceContract.getToken tokenDataSource;
+    TweetList tweetList = new TweetList();
 
     public SearchPresenter(SearchPresentationContract.View view, SearchDataSourceContract.getToken tokenDataSource) {
         this.view = view;
@@ -29,7 +30,7 @@ public class SearchPresenter implements SearchPresentationContract.Presenter {
 
     @Override
     public void setView(SearchPresentationContract.View view) {
-
+           this.view = view;
     }
 
     @Override
@@ -39,8 +40,8 @@ public class SearchPresenter implements SearchPresentationContract.Presenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<TwitterTokenType>() {
                     @Override
-                    public void onSuccess(TwitterTokenType moviesDomainModel) {
-                             getTweets(moviesDomainModel);
+                    public void onSuccess(TwitterTokenType token) {
+                        getTweets(token);
                     }
 
                     @Override
@@ -50,14 +51,23 @@ public class SearchPresenter implements SearchPresentationContract.Presenter {
                 });
     }
 
+    @Override
+    public void getTweetList() {
+        if(tweetList.tweets!=null)
+        Log.i("sizeIs",""+ tweetList.tweets.size());
+        view.showTweets(this.tweetList);
+    }
+
     private void getTweets(TwitterTokenType moviesDomainModel) {
-        Disposable disposable = tokenDataSource.getTweets(moviesDomainModel.accessToken,"IBM")
+        Disposable disposable = tokenDataSource.getTweets(moviesDomainModel.accessToken, "IBM")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableSingleObserver<TweetList>() {
                     @Override
-                    public void onSuccess(TweetList moviesDomainModel) {
-                     
+                    public void onSuccess(TweetList tweetList) {
+                        setTweetList(tweetList);
+                        Log.i("called2",""+tweetList.tweets.size());
+                        view.showTweets(tweetList);
                     }
 
                     @Override
@@ -65,6 +75,10 @@ public class SearchPresenter implements SearchPresentationContract.Presenter {
 
                     }
                 });
+    }
+
+    private void setTweetList(TweetList tweetList) {
+        this.tweetList = tweetList;
     }
 
     @Override
