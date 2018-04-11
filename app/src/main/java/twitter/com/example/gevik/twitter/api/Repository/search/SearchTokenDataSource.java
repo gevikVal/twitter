@@ -11,6 +11,7 @@ import io.reactivex.Single;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import twitter.com.example.gevik.twitter.Network.NetworkState;
 import twitter.com.example.gevik.twitter.api.ApiConstants;
 import twitter.com.example.gevik.twitter.api.TweetList;
 import twitter.com.example.gevik.twitter.api.TwitterApiServiceToken;
@@ -21,9 +22,12 @@ import twitter.com.example.gevik.twitter.api.TwitterTokenType;
  */
 
 public class SearchTokenDataSource implements SearchDataSourceContract.getToken {
+    NetworkState networkState;
+
     @Inject
-    public SearchTokenDataSource(TwitterApiServiceToken twitterApiServiceToken) {
+    public SearchTokenDataSource(TwitterApiServiceToken twitterApiServiceToken, NetworkState networkState) {
         this.twitterApiServiceToken = twitterApiServiceToken;
+        this.networkState = networkState;
     }
 
     private TwitterApiServiceToken twitterApiServiceToken;
@@ -31,10 +35,13 @@ public class SearchTokenDataSource implements SearchDataSourceContract.getToken 
     @Override
     public Single<TwitterTokenType> getToken() {
         Single<TwitterTokenType> remote = null;
-        try {
-            remote = twitterApiServiceToken.getToken("Basic " + getBase64String(ApiConstants.BEARER_TOKEN_CREDENTIALS), "client_credentials");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
+        if (networkState.isConnectedOrConnecting()) {
+
+            try {
+                remote = twitterApiServiceToken.getToken("Basic " + getBase64String(ApiConstants.BEARER_TOKEN_CREDENTIALS), "client_credentials");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
         }
         return remote;
 
@@ -44,7 +51,7 @@ public class SearchTokenDataSource implements SearchDataSourceContract.getToken 
     @Override
     public Single<TweetList> getTweets(String token, String searchTweet) {
         Single<TweetList> remote = null;
-        remote = twitterApiServiceToken.getTweetList("Bearer " + token,searchTweet);
+        remote = twitterApiServiceToken.getTweetList("Bearer " + token, searchTweet);
         return remote;
 
     }

@@ -11,8 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import twitter.com.example.gevik.twitter.R;
-import twitter.com.example.gevik.twitter.SearchScreen.dummy.DummyContent;
-import twitter.com.example.gevik.twitter.SearchScreen.dummy.DummyContent.DummyItem;
+
 import twitter.com.example.gevik.twitter.api.TweetList;
 
 import java.util.List;
@@ -92,6 +91,6 @@ public class TweetFragment extends Fragment {
 
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(TweetList item);
     }
 }

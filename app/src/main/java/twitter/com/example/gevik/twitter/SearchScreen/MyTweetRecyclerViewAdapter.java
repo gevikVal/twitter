@@ -12,17 +12,13 @@ import com.squareup.picasso.Picasso;
 
 import twitter.com.example.gevik.twitter.R;
 import twitter.com.example.gevik.twitter.SearchScreen.TweetFragment.OnListFragmentInteractionListener;
-import twitter.com.example.gevik.twitter.SearchScreen.dummy.DummyContent.DummyItem;
+
 import twitter.com.example.gevik.twitter.api.Tweet;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
+
 public class MyTweetRecyclerViewAdapter extends RecyclerView.Adapter<MyTweetRecyclerViewAdapter.ViewHolder> {
 
     private final List<Tweet> tweetList = new ArrayList<>();
@@ -45,10 +41,6 @@ public class MyTweetRecyclerViewAdapter extends RecyclerView.Adapter<MyTweetRecy
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        //  holder.mItem = tweetList.get(position);
-        //holder.mIdView.setText(tweetList.get(position).id);
-        //  holder.mContentView.setText(tweetList.get(position).content);
-
         holder.textTweet.setText(tweetList.get(position).text);
         holder.textUser.setText(tweetList.get(position).user.name);
         Picasso.with(context).load(tweetList.get(position).user.profileImageUrl).into(holder.imageLogo);
@@ -57,9 +49,7 @@ public class MyTweetRecyclerViewAdapter extends RecyclerView.Adapter<MyTweetRecy
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    // mListener.onListFragmentInteraction(holder.mView);
+
                 }
             }
         });
@@ -83,8 +73,6 @@ public class MyTweetRecyclerViewAdapter extends RecyclerView.Adapter<MyTweetRecy
             textUser = (TextView) view.findViewById(R.id.text_user);
             imageLogo = (ImageView) view.findViewById(R.id.image_user_logo);
         }
-
-
     }
 
     public void swapData(List<Tweet> list) {

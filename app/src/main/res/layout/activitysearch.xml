@@ -12,18 +12,25 @@
         android:hint="@string/search"
         >
     <EditText
+
+        android:layout_marginTop="15dp"
         android:id="@+id/search_text"
-        android:layout_width="wrap_content"
+        android:layout_width="150sp"
+        android:singleLine="true"
+        android:maxLines="1"
+        android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content" />
     </android.support.design.widget.TextInputLayout>
     <Button
         android:id="@+id/search"
         android:text="@string/search_twitter"
-        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="140dp"
         android:layout_height="wrap_content" />
 
     <fragment
         android:id="@+id/tweetFragment"
+        android:layout_marginTop="10dp"
         android:name="twitter.com.example.gevik.twitter.SearchScreen.TweetFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

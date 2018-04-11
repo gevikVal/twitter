@@ -23,7 +23,7 @@ public interface SearchPresentationContract {
 
         void setView(SearchPresentationContract.View view);
 
-        void searchButtonClicked();
+        void searchButtonClicked(String searchText);
 
         void getTweetList();
 

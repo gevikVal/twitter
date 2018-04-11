@@ -2,6 +2,7 @@ package twitter.com.example.gevik.twitter.module;
 
 import dagger.Module;
 import dagger.Provides;
+import twitter.com.example.gevik.twitter.Network.NetworkState;
 import twitter.com.example.gevik.twitter.api.Repository.search.SearchDataSourceContract;
 import twitter.com.example.gevik.twitter.api.Repository.search.SearchTokenDataSource;
 import twitter.com.example.gevik.twitter.api.TwitterApiServiceToken;
@@ -23,8 +24,8 @@ public class SearchModule {
     }
 
     @Provides
-    public SearchDataSourceContract.getToken provideToken(TwitterApiServiceToken twitterApiServiceToken) {
-        return new SearchTokenDataSource(twitterApiServiceToken);
+    public SearchDataSourceContract.getToken provideToken(TwitterApiServiceToken twitterApiServiceToken, NetworkState networkState) {
+        return new SearchTokenDataSource(twitterApiServiceToken, networkState);
     }
 
 
