@@ -1,7 +1,9 @@
 package twitter.com.example.gevik.twitter.api;
 
 
+import io.reactivex.Single;
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Field;
@@ -15,11 +17,11 @@ import retrofit2.http.Query;
 public interface TwitterApiServiceToken {
 
     @FormUrlEncoded
-    @POST("https://api.twitter.com/oauth2/token")
-    void getToken(
+    @POST("/oauth2/token")
+    Single<TwitterTokenType> getToken(
             @Header("Authorization") String authorization,
-            @Field("grant_type") String grantType,
-            Call<TwitterTokenType> response
+            @Field("grant_type") String grantType
+
     );
 
    // public static final Retrofit retrofit = new Retrofit.Builder()
@@ -27,10 +29,10 @@ public interface TwitterApiServiceToken {
         //    .addConverterFactory(GsonConverterFactory.create())
         //    .build();
    @GET(ApiConstants.TWITTER_HASHTAG_SEARCH_CODE)
-   void getTweetList(
+   Single<TweetList> getTweetList(
            @Header("Authorization") String authorization,
-           @Query("q") String hashtag,
-           Call<TweetList> callback
+           @Query("q") String hashtag
+
    );
 }
 

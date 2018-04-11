@@ -15,6 +15,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import timber.log.Timber;
+import twitter.com.example.gevik.twitter.api.ApiConstants;
 import twitter.com.example.gevik.twitter.api.TwitterApiServiceToken;
 import twitter.com.example.gevik.twitter.scope.ApplicationScope;
 
@@ -65,7 +66,7 @@ public class NetworkModule {
     @Provides
     public Retrofit provideRetrofit(OkHttpClient okHttpClient) {
         Retrofit retrofit = new Retrofit.Builder()
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).baseUrl(ApiConstants.TWITTER_SEARCH_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build();
