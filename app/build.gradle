@@ -88,10 +88,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    compile 'com.twitter.sdk.android:twitter-core:3.1.1'
-    compile 'com.twitter.sdk.android:tweet-ui:3.1.1'
-    compile 'com.twitter.sdk.android:tweet-composer:3.1.1'
-    compile 'com.twitter.sdk.android:twitter-mopub:3.1.1'
+
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit2Version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit2Version"
@@ -169,6 +166,11 @@ dependencies {
     implementation "android.arch.lifecycle:viewmodel:1.1.0"
     // alternatively, just LiveData
     annotationProcessor "android.arch.lifecycle:compiler:1.1.0"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
 
 }
+repositories {
+    mavenCentral()
+}
+apply plugin: 'kotlin-android-extensions'
