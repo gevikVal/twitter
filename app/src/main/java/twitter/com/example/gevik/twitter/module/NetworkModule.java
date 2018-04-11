@@ -27,7 +27,7 @@ public class NetworkModule {
 
     @Provides
     public Cache provideCache(Application application) {
-        int cacheSize = 10 * 1024 * 1024; // 10MB
+        int cacheSize = 10 * 1024 * 1024; // 11MB
         Cache cache = null;
         // Install an HTTP cache in the application cache directory.
         try {
