@@ -2,11 +2,6 @@ package twitter.com.example.gevik.twitter.api;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * @author Sergii Zhuk
- *         Date: 24.06.2014
- *         Time: 23:53
- */
 public class TwitterTokenType {
 
 	@SerializedName("token_type")

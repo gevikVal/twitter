@@ -11,11 +11,6 @@ import twitter.com.example.gevik.twitter.module.NetworkModule;
 import twitter.com.example.gevik.twitter.module.SearchModule;
 import twitter.com.example.gevik.twitter.scope.ApplicationScope;
 
-
-/**
- * Created by gevik on 2/26/2018.
- */
-
 @ApplicationScope
 @Component(modules = {ApplicationModule.class, AndroidModule.class, NetworkModule.class})
 public interface ApplicationComponent {

@@ -28,28 +28,18 @@ public class TwitterApplication extends Application {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
 
-
     private static TwitterApplication currentApplication = null;
-
     private RefWatcher refWatcher;
     private ApplicationComponent applicationComponent;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
         initializeTimber();
         initializeLeakCanary();
-       // initializeRealm();
-
-
         currentApplication = this;
-
         applicationComponent = createApplicationComponent();
-
-
     }
-
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -57,15 +47,12 @@ public class TwitterApplication extends Application {
         MultiDex.install(this);
     }
 
-
     public ApplicationComponent createApplicationComponent() {
         return DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .androidModule(new AndroidModule(this))
                 .build();
     }
-
-
 
     public ApplicationComponent getApplicationComponent() {
         return applicationComponent;
@@ -87,8 +74,6 @@ public class TwitterApplication extends Application {
         }
         refWatcher = LeakCanary.install(this);
     }
-
-
 
     private void initializeTimber() {
         if (BuildConfig.DEBUG) {

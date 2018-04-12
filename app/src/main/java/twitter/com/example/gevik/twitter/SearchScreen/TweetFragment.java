@@ -19,17 +19,13 @@ import java.util.List;
 
 public class TweetFragment extends Fragment {
 
-
     private static final String ARG_COLUMN_COUNT = "column-count";
     private OnListFragmentInteractionListener mListener;
     MyTweetRecyclerViewAdapter adapter;
 
-
     public TweetFragment() {
     }
 
-    // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
     public static TweetFragment newInstance(int columnCount) {
         TweetFragment fragment = new TweetFragment();
         Bundle args = new Bundle();
@@ -41,27 +37,17 @@ public class TweetFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tweet_list, container, false);
-
-        // Set the adapter
-
         Context context = view.getContext();
         adapter = new MyTweetRecyclerViewAdapter(mListener, getActivity());
-
         RecyclerView recyclerView = (RecyclerView) view;
-
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
-
-
-
         return view;
     }
 

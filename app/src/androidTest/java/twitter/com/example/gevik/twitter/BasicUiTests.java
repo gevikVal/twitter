@@ -1,5 +1,6 @@
 package twitter.com.example.gevik.twitter;
 
+import android.content.pm.ActivityInfo;
 import android.os.SystemClock;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
@@ -26,11 +27,11 @@ public class BasicUiTests {
 
     @Rule
     public ActivityTestRule<SearchActivity> mActivityRule = new ActivityTestRule<>(
-            SearchActivity .class);
+            SearchActivity.class);
 
     @Test
     public void emptySearch() {
-            //empty user name
+        //empty user name
         onView(withId(R.id.search)).perform(click()); //press submit
         SystemClock.sleep(2000);
     }
@@ -41,5 +42,11 @@ public class BasicUiTests {
                 .perform(typeText("BMW"), closeSoftKeyboard());
         onView(withId(R.id.search)).perform(click());
         SystemClock.sleep(2000);
+        mActivityRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        SystemClock.sleep(4000);
+        mActivityRule.getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        SystemClock.sleep(4000);
     }
+
+
 }

@@ -57,15 +57,12 @@ public class SearchActivity extends BaseActivity implements SearchPresentationCo
 
         if (viewModel.getPresenter() == null) {
             viewModel.setPresenter(presenter);
-            Log.i("nullIs", "nullIs");
         }
         presenter = viewModel.getPresenter();
         presenter.setView(this);
         presenter.getTweetList();
 
-
     }
-
     SearchComponent createSearchComponent() {
         searchComponent = ((TwitterApplication) this.getApplication())
                 .getApplicationComponent()
@@ -73,7 +70,6 @@ public class SearchActivity extends BaseActivity implements SearchPresentationCo
         return searchComponent;
 
     }
-
     @Override
     public void searchSuccessful() {
 
@@ -86,7 +82,7 @@ public class SearchActivity extends BaseActivity implements SearchPresentationCo
 
     @Override
     public void showError(String errorMessage) {
-
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
 
     @Override

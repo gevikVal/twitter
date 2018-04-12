@@ -55,7 +55,7 @@ public class SearchPresenter implements SearchPresentationContract.Presenter, Li
 
                     @Override
                     public void onError(Throwable throwable) {
-
+                        view.showError("Error");
                     }
                 });
         compositeDisposable.add(disposable);
@@ -64,8 +64,6 @@ public class SearchPresenter implements SearchPresentationContract.Presenter, Li
 
     @Override
     public void getTweetList() {
-        if (tweetList.tweets != null)
-            Log.i("sizeIs", "" + tweetList.tweets.size());
         view.showTweets(this.tweetList);
     }
 
@@ -83,7 +81,7 @@ public class SearchPresenter implements SearchPresentationContract.Presenter, Li
 
                     @Override
                     public void onError(Throwable throwable) {
-
+                         view.showError("Error");
                     }
                 });
         compositeDisposable.add(disposable);
@@ -102,7 +100,7 @@ public class SearchPresenter implements SearchPresentationContract.Presenter, Li
     @Override
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     public void onResume() {
-        
+
     }
     @Override
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)

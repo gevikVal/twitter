@@ -9,7 +9,6 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.LinearLayout;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -29,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fadeIn(LinearLayout layout) {       //fade in animation
-
         Animation fadeOut = new AlphaAnimation(0, 1);  // the 1, 0 here notifies that we want the opacity to go from opaque (1) to transparent (0)
         fadeOut.setInterpolator(new AccelerateInterpolator());
         fadeOut.setStartOffset(1800); // Start fading out after 500 milli seconds
@@ -45,10 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }, 4100);
-
-
-
-
     }
 
     private void fadeOut(final LinearLayout layout) {  //fade out animation
