@@ -35,14 +35,7 @@ public class MainActivity extends AppCompatActivity {
         layout.setAnimation(fadeOut);
         layout.setVisibility(View.VISIBLE);
         final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Do something after 5s = 5000ms
-               fadeOut(layout);
-
-            }
-        }, 4100);
+        handler.postDelayed(() -> fadeOut(layout), 4100);
     }
 
     private void fadeOut(final LinearLayout layout) {  //fade out animation
@@ -53,13 +46,9 @@ public class MainActivity extends AppCompatActivity {
         fadeOut.setDuration(4500); // Fadeout duration should be 1000 milli seconds
         layout.setAnimation(fadeOut);
         final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Do something after 5s = 5000ms
-                startActivity(intent);
-
-            }
+        handler.postDelayed(() -> {
+            startActivity(intent);
+            finish();
         }, 6100);
     }
 
