@@ -17,6 +17,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import twitter.com.example.gevik.twitter.BaseActivity;
 import twitter.com.example.gevik.twitter.R;
 
 import twitter.com.example.gevik.twitter.TwitterApplication;
@@ -26,7 +27,7 @@ import twitter.com.example.gevik.twitter.module.SearchModule;
 import twitter.com.example.gevik.twitter.ViewModel.ViewModel;
 import twitter.com.example.gevik.twitter.presentation.SearchPresentationContract;
 
-public class SearchActivity extends AppCompatActivity implements SearchPresentationContract.View, TweetFragment.OnListFragmentInteractionListener {
+public class SearchActivity extends BaseActivity implements SearchPresentationContract.View, TweetFragment.OnListFragmentInteractionListener {
     SearchComponent searchComponent;
     private Unbinder unbinder;
     TweetFragment tweetFragment;

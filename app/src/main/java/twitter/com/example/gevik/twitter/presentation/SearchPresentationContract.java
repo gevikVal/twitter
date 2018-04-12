@@ -33,6 +33,12 @@ public interface SearchPresentationContract {
 
         @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
         void onResume();
+
+        @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+        void onCreate();
+
+        @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+        void onDestroy();
     }
 
     interface ViewModel {
